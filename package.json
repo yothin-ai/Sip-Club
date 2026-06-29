@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
+    "dev": "pnpm --parallel --filter mobile --filter landing run dev",
     "dev:mobile": "pnpm --filter mobile start",
     "dev:landing": "pnpm --filter landing dev",
     "typecheck": "pnpm -r run typecheck",
