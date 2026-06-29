@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sip Club — Coffee Drip Assistant",
+  title: "Sip Club — ผู้ช่วยชงกาแฟดริป",
   description:
-    "Scan your coffee bag, get a personalized drip recipe converted to your own grinder, and brew with a live timer guide.",
+    "ถ่ายรูปถุงกาแฟ ให้ AI วิเคราะห์ roast/process แล้วคำนวณเบอร์บด อุณหภูมิ และจังหวะเทน้ำ ให้ตรงกับเครื่องที่คุณมีจริง",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="th"
       className={`${anuphan.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-heading">{children}</body>
