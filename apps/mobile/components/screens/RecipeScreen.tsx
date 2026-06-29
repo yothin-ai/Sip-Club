@@ -21,9 +21,9 @@ export function RecipeScreen() {
   if (!recipe) {
     return (
       <View className="flex-1">
-        <ScreenHeader label="Recipe" screen={2} />
+        <ScreenHeader label="สูตร" screen={2} />
         <View className="flex-1 items-center justify-center px-6">
-          <Text className="text-body">Scan a bag first to generate a recipe.</Text>
+          <Text className="text-body">ถ่ายรูปถุงกาแฟก่อน เพื่อให้ระบบคำนวณสูตรให้</Text>
         </View>
       </View>
     );
@@ -36,33 +36,32 @@ export function RecipeScreen() {
 
   return (
     <View className="flex-1">
-      <ScreenHeader label="Recipe" screen={2} />
+      <ScreenHeader label="สูตร" screen={2} />
       <ScrollView className="flex-1 px-6" contentContainerStyle={{ paddingBottom: 24 }}>
         <Text className="mb-2 font-sans-semibold text-2xl text-heading" style={{ fontSize: 26 }}>
-          Your recipe
+          สูตรของคุณ
         </Text>
         <Text className="mb-6 font-sans text-sm text-body-soft">
-          {recipe.origin} · {recipe.process} · {recipe.roast} roast for {dripper?.name ?? "your dripper"}
+          {recipe.origin} · {recipe.process} · {recipe.roast} roast บน {dripper?.name ?? "ดริปเปอร์ของคุณ"}
         </Text>
 
         <View className="mb-5 flex-row gap-grid-gap">
-          <StatCard label="Ratio" value={recipe.ratio} />
-          <StatCard label="Water temp" value={`${recipe.water_temp_c}°C`} />
-          <StatCard label="Total time" value={`${totalMin}:${String(totalSec).padStart(2, "0")}`} />
+          <StatCard label="อัตราส่วน" value={recipe.ratio} />
+          <StatCard label="อุณหภูมิน้ำ" value={`${recipe.water_temp_c}°`} />
+          <StatCard label="เวลารวม" value={`${totalMin}:${String(totalSec).padStart(2, "0")}`} />
         </View>
 
         <Card className="mb-6 bg-surface-strong">
-          <Text className="font-mono text-[10px] uppercase tracking-widest text-muted">Grind setting</Text>
-          <Text className="mt-2 font-sans-medium text-base text-heading">{grinder?.name ?? recipe.grinder_id}</Text>
+          <Text className="font-mono text-[10px] text-accent">เบอร์บดสำหรับ {grinder?.name ?? recipe.grinder_id}</Text>
           <Text className="mt-1 font-mono-semibold text-2xl text-accent">
-            {recipe.grind_setting.value} {recipe.grind_setting.unit}
+            {recipe.grind_setting.value} {recipe.grind_setting.unit === "clicks" ? "คลิก" : recipe.grind_setting.unit}
           </Text>
           <Text className="mt-2 font-mono text-xs text-muted">
-            {recipe.dose_g}g / {recipe.water_g}g
+            กาแฟ / น้ำ · {recipe.dose_g}g / {recipe.water_g}g
           </Text>
         </Card>
 
-        <Text className="mb-3 font-sans-medium text-base text-heading">Pour timeline</Text>
+        <Text className="mb-3 font-mono text-xs text-accent">จังหวะเทน้ำ</Text>
         <View className="mb-8">
           {recipe.pours.map((pour, i) => (
             <View key={pour.t_sec} className="flex-row">
@@ -82,7 +81,7 @@ export function RecipeScreen() {
           ))}
         </View>
 
-        <PrimaryButton label="Start brew" onPress={startBrew} />
+        <PrimaryButton label="เริ่มชง" onPress={startBrew} />
       </ScrollView>
     </View>
   );

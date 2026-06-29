@@ -21,14 +21,14 @@ export function Dropdown({ label, options, selectedId, onSelect, isOpen, onToggl
 
   return (
     <View className="z-10">
-      <Text className="mb-2 font-mono text-xs uppercase tracking-widest text-muted">{label}</Text>
+      <Text className="mb-2 font-sans-medium text-xs text-accent">{label}</Text>
       <Pressable
         onPress={onToggle}
         className={`flex-row items-center justify-between rounded-input border px-4 py-4 ${
           isOpen ? "border-border-strong" : "border-border"
         } bg-surface-strong`}
       >
-        <Text className="font-sans text-base text-heading">{selected?.label ?? "Select..."}</Text>
+        <Text className="font-sans text-base text-heading">{selected?.label ?? "เลือก..."}</Text>
         <Text className="text-body">{isOpen ? "▲" : "▼"}</Text>
       </Pressable>
 

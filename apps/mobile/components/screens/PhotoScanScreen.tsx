@@ -33,25 +33,26 @@ export function PhotoScanScreen() {
 
   return (
     <View className="flex-1">
-      <ScreenHeader label="Scan bag" screen={1} />
+      <ScreenHeader label="ถ่ายรูป" screen={1} />
       <ScrollView className="flex-1 px-6" contentContainerStyle={{ paddingBottom: 24 }}>
         <Text className="mb-2 font-sans-semibold text-2xl text-heading" style={{ fontSize: 26 }}>
-          Scan your coffee bag
+          ถ่ายรูปถุงกาแฟ
         </Text>
         <Text className="mb-8 font-sans text-sm leading-6 text-body">
-          ถ่ายรูปหรืออัปโหลดรูปถุงกาแฟ เราจะวิเคราะห์ roast, process และ origin ให้
+          วางถุงให้เห็นฉลากชัด AI จะอ่าน roast และ process ให้
         </Text>
 
         <View className="mb-6 items-center justify-center rounded-card border border-dashed border-border bg-surface py-16">
           <View className="mb-3 h-12 w-12 items-center justify-center rounded-icon-badge border border-border-strong">
             <Text className="text-xl text-accent">↑</Text>
           </View>
-          <Text className="font-sans text-sm text-body">ลากรูปมาวาง หรือแตะเพื่ออัปโหลด</Text>
+          <Text className="font-sans text-sm text-body">ลากรูปมาวาง หรือถ่ายจากกล้อง</Text>
+          <Text className="mt-1 font-mono text-xs text-muted">JPG · PNG · HEIC</Text>
         </View>
 
         {!analyzed && (
           <PrimaryButton
-            label={isAnalyzing ? "Analyzing..." : "Scan / Upload"}
+            label={isAnalyzing ? "กำลังวิเคราะห์..." : "ถ่ายรูป / อัปโหลด"}
             onPress={handleScan}
             disabled={isAnalyzing}
           />
@@ -65,12 +66,13 @@ export function PhotoScanScreen() {
 
         {analyzed && analysisResult && (
           <View className="mt-2">
+            <Text className="mb-3 font-mono text-xs text-accent">ผลการวิเคราะห์</Text>
             <ResultChip label="Roast level" value={analysisResult.roast} confidence={analysisResult.confidence.roast} />
             <ResultChip label="Processing" value={analysisResult.process} confidence={analysisResult.confidence.process} />
             <ResultChip label="Origin" value={analysisResult.origin} confidence={analysisResult.confidence.origin} />
 
             <View className="mt-6">
-              <PrimaryButton label="Continue to recipe" onPress={goNext} />
+              <PrimaryButton label="คำนวณสูตรดริป" onPress={goNext} />
             </View>
           </View>
         )}

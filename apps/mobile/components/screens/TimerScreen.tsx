@@ -43,9 +43,9 @@ export function TimerScreen() {
   if (!recipe) {
     return (
       <View className="flex-1">
-        <ScreenHeader label="Timer" screen={3} />
+        <ScreenHeader label="TIMER" screen={3} />
         <View className="flex-1 items-center justify-center px-6">
-          <Text className="text-body">Start a brew from the recipe screen first.</Text>
+          <Text className="text-body">กดเริ่มชงจากหน้าสูตรก่อน</Text>
         </View>
       </View>
     );
@@ -66,7 +66,7 @@ export function TimerScreen() {
 
   return (
     <View className="flex-1">
-      <ScreenHeader label="Brew timer" screen={3} />
+      <ScreenHeader label="TIMER" screen={3} />
       <View className="flex-1 px-6" style={{ paddingBottom: 24 }}>
         <View className="items-center py-6">
           <Animated.View style={{ transform: [{ scale: pulse }] }}>
@@ -81,21 +81,17 @@ export function TimerScreen() {
         </View>
 
         <Card className="mb-3 border-border-strong bg-surface-strong">
-          <Text className="font-mono text-[10px] uppercase tracking-widest text-accent">Current step</Text>
-          <View className="mt-2 flex-row items-center justify-between">
-            <Text className="font-sans-medium text-base text-heading">{currentStep.label}</Text>
-            <Text className="font-mono text-xs text-muted">{currentStep.time_label}</Text>
-          </View>
-          <Text className="mt-2 font-sans text-sm leading-5 text-body-soft">{currentStep.desc}</Text>
+          <Text className="font-mono text-[10px] text-accent">ตอนนี้ · {currentStep.time_label}</Text>
+          <Text className="mt-2 font-sans-medium text-base text-heading">{currentStep.label}</Text>
+          <Text className="mt-1 font-sans text-sm leading-5 text-body-soft">{currentStep.desc}</Text>
         </Card>
 
         {nextStep && (
           <Card className="mb-6 bg-transparent" style={{ opacity: 0.55 }}>
-            <Text className="font-mono text-[10px] uppercase tracking-widest text-muted">Next step</Text>
-            <View className="mt-2 flex-row items-center justify-between">
-              <Text className="font-sans-medium text-base text-body-soft">{nextStep.label}</Text>
-              <Text className="font-mono text-xs text-muted">{nextStep.time_label}</Text>
-            </View>
+            <Text className="font-mono text-[10px] text-muted">ถัดไป · {nextStep.time_label}</Text>
+            <Text className="mt-2 font-sans-medium text-base text-body-soft">
+              {nextStep.label} · {nextStep.water_label}
+            </Text>
           </Card>
         )}
 
@@ -105,10 +101,10 @@ export function TimerScreen() {
             className="items-center rounded-pill border border-border-strong py-4"
           >
             <Text className="font-sans-medium text-base text-heading">
-              {timer.running ? "Pause" : "Resume"}
+              {timer.running ? "หยุดพัก" : elapsed >= total_time_sec ? "เริ่มใหม่" : "เล่นต่อ"}
             </Text>
           </Pressable>
-          <PrimaryButton label="Finish brew" onPress={finishBrew} />
+          <PrimaryButton label="จบเสิร์ฟ" onPress={finishBrew} />
         </View>
       </View>
     </View>

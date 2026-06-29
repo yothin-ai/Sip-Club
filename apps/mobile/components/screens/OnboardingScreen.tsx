@@ -15,18 +15,18 @@ export function OnboardingScreen() {
 
   return (
     <View className="flex-1">
-      <ScreenHeader label="Onboarding" screen={0} />
+      <ScreenHeader label="SETUP" screen={0} />
       <ScrollView className="flex-1 px-6" contentContainerStyle={{ paddingBottom: 24 }}>
         <Text className="mb-2 font-sans-semibold text-2xl text-heading" style={{ fontSize: 26 }}>
-          Set up your gear
+          เลือกอุปกรณ์ของคุณ
         </Text>
         <Text className="mb-8 font-sans text-sm leading-6 text-body">
-          เลือกเครื่องบดและดริปเปอร์ของคุณ เราจะคำนวณสูตรให้ตรงกับอุปกรณ์ที่มี
+          ตั้งค่าครั้งเดียว ระบบจำไว้ให้คุณครั้งต่อไป
         </Text>
 
         <View className="mb-5">
           <Dropdown
-            label="Grinder"
+            label="เครื่องบดของคุณ"
             options={grinders.map((g) => ({ id: g.id, label: g.name, sublabel: g.scale }))}
             selectedId={grinderId}
             onSelect={(id) => {
@@ -40,7 +40,7 @@ export function OnboardingScreen() {
 
         <View className="mb-6">
           <Dropdown
-            label="Dripper"
+            label="ดริปเปอร์ของคุณ"
             options={drippers.map((d) => ({ id: d.id, label: d.name, sublabel: d.default_ratio }))}
             selectedId={dripperId}
             onSelect={(id) => {
@@ -53,13 +53,13 @@ export function OnboardingScreen() {
         </View>
 
         <Card className="mb-8 border-dashed bg-transparent">
-          <Text className="font-sans-medium text-sm text-body-soft">ยังไม่มีอุปกรณ์?</Text>
+          <Text className="font-sans-medium text-sm text-body-soft">ไม่มีเครื่องบดของคุณในรายการ?</Text>
           <Text className="mt-1 font-sans text-xs text-muted">
-            ตั้งค่าเครื่องบด/ดริปเปอร์ใหม่ได้ทีหลังในหน้าตั้งค่า
+            calibrate เครื่องบดเองได้เลย
           </Text>
         </Card>
 
-        <PrimaryButton label="Continue" onPress={goNext} />
+        <PrimaryButton label="บันทึกแล้วเริ่มต่อ" onPress={goNext} />
       </ScrollView>
     </View>
   );
