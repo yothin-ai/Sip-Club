@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — duplicated numerically from packages/core/src/tokens.ts
+ * (see design_handoff_coffee_drip/README.md section 5). Tailwind v4 reads theme
+ * values from CSS directly (no tailwind.config.ts by default), so this @theme
+ * block is the landing app's equivalent of a "Tailwind config" — keep these
+ * values in sync with apps/mobile/tailwind.config.js and packages/core/src/tokens.ts
+ * by hand; there's no clean way to share a JS object between the Next.js and
+ * Expo/Metro toolchains at config time.
+ */
+@theme inline {
+  --color-bg: #0a0712;
+  --color-bg-alt: #100b1a;
+  --color-surface: rgba(167, 139, 250, 0.04);
+  --color-surface-strong: rgba(167, 139, 250, 0.06);
+  --color-border: rgba(167, 139, 250, 0.15);
+  --color-border-strong: rgba(167, 139, 250, 0.28);
+  --color-accent: #b9a3ff;
+  --color-accent-2: #a78bfa;
+  --color-accent-deep: #7c5cfa;
+  --color-heading: #f5f3ff;
+  --color-body: #9d94b0;
+  --color-body-soft: #c8bfdb;
+  --color-muted: #7d738f;
+  --color-footer-bg: #c4acfb;
+  --color-footer-text: #1c1330;
+  --color-footer-text-soft: #42326a;
+
+  --font-sans: var(--font-anuphan), "Anuphan", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+
+  --radius-card: 22px;
+  --radius-card-sm: 20px;
+  --radius-cta-hero: 34px;
+  --radius-pill: 999px;
+  --radius-input: 15px;
+  --radius-chip: 999px;
+  --radius-icon-badge: 18px;
+  --radius-icon-badge-sm: 15px;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-heading);
+  font-family: var(--font-sans);
+}

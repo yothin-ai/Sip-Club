@@ -1,0 +1,15 @@
+{
+  "name": "sip-club",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev:mobile": "pnpm --filter mobile start",
+    "dev:landing": "pnpm --filter landing dev",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@11.9.0"
+}
